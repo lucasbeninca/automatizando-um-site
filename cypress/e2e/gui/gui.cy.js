@@ -1,17 +1,44 @@
+import { generate } from 'gerador-validador-cpf';
 
-describe('Automated Tests - E-commerce Platform', () => {
+describe('Automated Tests - GUI', () => {
+    beforeEach(() => {
+        cy.visit('https://www.estantevirtual.com.br/auth/register/natural?redirect=%2F');
+    });
+
+    it('register on the page', () => {
+        const cpf = generate(); // Gera um CPF válido
+        const email = `teste${Date.now()}@gmail.com`; // Gera um email único
+        const senha = 'Senha@123';
+        cy.pause() // Preencher os campos do formulário
+        cy.get('#name').type('pedro');
+        cy.get('#lastName').type('teste')
+        cy.get('#email').type(email);
+        cy.get('#cpf').type(cpf);
+        cy.get('#password').type(senha);
+       // cy.get('#dayOfBirth').select()
+       // cy.get('#monthOfBirth').select()
+       // cy.get('#yearOfBirth').select()
+        cy.get('#homePhone').type('46985555555')
+        cy.get('#zipCode').type('85660000')
+     //   cy.get('#streetType').select()
+        cy.get('#streetNumber').type('1222')
+        cy.get('#additionalInfo')
+        cy.get('#neighborhood').type('centro')
+      //  cy.get('#state').select()
+        cy.get('#city').type('dois vizinhos')
+        cy.get('#emailNewsletter').check()
+        cy.get('#privacy').check()
+
+
+        
     
-  beforeEach(() => {
-      cy.visit('https://barbaderespeito.com.br/account/login');
-  });
 
-  it('Must allow login with valid credentials', () => {
-   cy.pause()
-    //   cy.get('#email').type('usuario@teste.com');
-    //   cy.get('#password').type('SenhaSegura123');
-    //   cy.get('#login-button').click();
-    //   cy.contains('Bem-vindo, usuário!').should('be.visible');
-  });
+        
+        cy.get().click();
+
+       
+    });
+
 
   it.skip('It must search for a product by name and validate the results', () => {
       cy.get('#search-bar').type('Smartphone{enter}');

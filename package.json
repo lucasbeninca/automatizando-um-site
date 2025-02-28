@@ -1,5 +1,7 @@
 {
   "devDependencies": {
-    "cypress": "^14.1.0"
+    "@faker-js/faker": "^9.5.1",
+    "cypress": "^14.1.0",
+    "gerador-validador-cpf": "^6.0.0"
   }
 }
