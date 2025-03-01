@@ -39,10 +39,11 @@ ___
 Legal, os pre-requisitos estão prontos. ☑️
 
 1. Clone este projeto
-2. Execute o comando `npx cypress open` para abrir o Cypress 
-3. Na Suite do Cypress selecione *E2E Testings*
+2. Execute o comando `npm init`para instalar as dev dependences
+3. Execute o comando `npx cypress open` para abrir o Cypress 
+4. Na Suite do Cypress selecione *E2E Testings*
 ![Suite-Cypress-Step01](images/step01.png)
 
-4. Apos Clicar em *E2E Testings* navegador desejado por padrão o Cypress necessita que o navegador esteja instalado em sua maquina para poder utilizar o mesmo (recomendo utilizar o google chrome)
+5. Apos Clicar em *E2E Testings* navegador desejado por padrão o Cypress necessita que o navegador esteja instalado em sua maquina para poder utilizar o mesmo (recomendo utilizar o google chrome)
 ![Suite-Cypress-Step02](images/step02.png)
-5. após isso só escolher se quer executar os testes de *API* ou *E2E*.
+6. após isso só escolher se quer executar os testes de *API* ou *E2E*.
