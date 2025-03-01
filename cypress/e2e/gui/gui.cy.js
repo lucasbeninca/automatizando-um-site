@@ -6,37 +6,81 @@ describe('Automated Tests - GUI', () => {
     });
 
     it('register on the page', () => {
-        const cpf = generate(); // Gera um CPF válido
-        const email = `teste${Date.now()}@gmail.com`; // Gera um email único
+        const email = `teste${Date.now()}@gmail.com`; 
+        const nome = 'pedro'
         const senha = 'Senha@123';
-        cy.pause() // Preencher os campos do formulário
-        cy.get('#name').type('pedro');
-        cy.get('#lastName').type('teste')
-        cy.get('#email').type(email);
-        cy.get('#cpf').type(cpf);
-        cy.get('#password').type(senha);
-       // cy.get('#dayOfBirth').select()
-       // cy.get('#monthOfBirth').select()
-       // cy.get('#yearOfBirth').select()
-        cy.get('#homePhone').type('46985555555')
-        cy.get('#zipCode').type('85660000')
-     //   cy.get('#streetType').select()
-        cy.get('#streetNumber').type('1222')
-        cy.get('#additionalInfo')
-        cy.get('#neighborhood').type('centro')
-      //  cy.get('#state').select()
-        cy.get('#city').type('dois vizinhos')
-        cy.get('#emailNewsletter').check()
-        cy.get('#privacy').check()
-
-
-        
-    
-
-        
-        cy.get().click();
-
-       
+        const phone = '46985555555';
+        const CEP = '85660000';
+        const cpf = generate(); 
+        const formatCPF = (cpf) => {
+            return cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
+        };
+        const formatPhone = (phone) => {
+            return phone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+          };
+        const formatCEP = (CEP) =>{
+            return CEP.replace(/^(\d{5})(\d{3})$/,'$1-$2' );
+        }
+          
+        cy.get('#name')
+          .type(nome)
+          .should('have.value',nome)
+        cy.get('#lastName')
+          .type('teste')
+          .should('have.value','teste')
+        cy.get('#cpf')
+          .type(cpf)
+          .should('have.value', formatCPF(cpf))
+        cy.get('#dayOfBirth')
+          .select(1)
+          .should('have.value','01')
+        cy.get('#monthOfBirth')
+          .select(1)
+          .invoke('text')
+          .should('contain', 'Janeiro');
+        cy.get('#yearOfBirth')
+          .select(25)
+          .should('have.value','2001')
+        cy.get('#homePhone')
+          .type(phone)
+          .should('have.value',formatPhone(phone))
+        cy.get('#zipCode')
+          .type(CEP)
+          .should('have.value',formatCEP(CEP))
+        cy.get('#streetType')
+          .should('be.visible')
+          .select(2)
+          .should('have.value','Rua')
+        cy.get('#streetName')
+          .type('do comércio')
+          .should('have.value','do comércio')
+        cy.get('#streetNumber')
+          .type('1222')
+          .should('have.value','1222')
+        cy.get('#neighborhood')
+          .type('centro')
+          .should('have.value','centro')
+        cy.get('#state')
+          .select(16)
+          .invoke('text')
+          .should('contain','Paraná')
+        cy.get('#city')
+          .type('dois vizinhos')
+          .should('have.value','dois vizinhos')
+        cy.get('#email')
+          .type(email)
+          .should('have.value',email)
+        cy.get('#password')
+          .type(senha)
+        cy.get('#emailNewsletter')
+          .check()
+        cy.get('#privacy')
+          .check()
+        cy.get('[qa-auto="gift-wrapping-select-button"]')
+          .should('be.visible')
+          .click()
+        cy.get('.user__content', { timeout: 5000 }) // Aumenta o tempo de espera para 10s
+          .should('contain', `Olá,`);      
     });
 
 
