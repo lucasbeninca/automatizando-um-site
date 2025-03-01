@@ -46,4 +46,8 @@ Legal, os pre-requisitos estão prontos. ☑️
 
 5. Apos Clicar em *E2E Testings* navegador desejado por padrão o Cypress necessita que o navegador esteja instalado em sua maquina para poder utilizar o mesmo (recomendo utilizar o google chrome)
 ![Suite-Cypress-Step02](images/step02.png)
-6. após isso só escolher se quer executar os testes de *API* ou *E2E* Cada arquivo reune os testes referentes a uma verificação do sistema sendo elas  testes de **Login**, **Cadastro** e **Compras**.
+6. após isso só escolher se quer executar os testes de *API* ou *E2E* Cada arquivo reune os testes referentes a uma verificação do sistema sendo os testes de *GUI* Testes E2E na Aplicação [Estante-Virtual](https://www.estantevirtual.com.br/) os testes foram divididos em três categorias sendo elas testes de **Login**, **Cadastro** e **Compras**.
+![Suite-Cypress-Step03](images/step03.png)
+7. Por fim Temos os testes de API onde para eles utilizamos a plataforma publica `https://reqres.in`.
+![Suite-Cypress-Step04](images/step04.png)
+

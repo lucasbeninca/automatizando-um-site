@@ -1,6 +1,6 @@
 describe('Automated Tests API - reqres.in Platform', () => {
    
-    it.skip('Validação de API - Teste POST para criação de usuário', () => {
+    it('Validação de API - Teste POST para criação de usuário', () => {
       cy.request('POST', 'https://reqres.in/api/users', {
           name: "Lucas",
           job: "QA Engineer"
@@ -10,7 +10,7 @@ describe('Automated Tests API - reqres.in Platform', () => {
       });
   });
   
-  it.skip('Validação de API - Teste PUT para atualização de usuário', () => {
+  it('Validação de API - Teste PUT para atualização de usuário', () => {
       cy.request('PUT', 'https://reqres.in/api/users/2', {
           name: "Lucas Atualizado",
           job: "Senior QA"
@@ -20,13 +20,13 @@ describe('Automated Tests API - reqres.in Platform', () => {
       });
   });
   
-  it.skip('Validação de API - Teste DELETE para remover usuário', () => {
+  it('Validação de API - Teste DELETE para remover usuário', () => {
       cy.request('DELETE', 'https://reqres.in/api/users/2').then((response) => {
           expect(response.status).to.eq(204);
       });
   });
   
-  it.skip('Validação de API - Teste de erro no login', () => {
+  it('Validação de API - Teste de erro no login', () => {
       cy.request({
           method: 'POST',
           url: 'https://reqres.in/api/login',
@@ -37,7 +37,7 @@ describe('Automated Tests API - reqres.in Platform', () => {
           }
       }).then((response) => {
           expect(response.status).to.eq(400);
-          expect(response.body).to.have.property('error', 'Missing email or username');
+          expect(response.body).to.have.property('error', 'user not found');
       })
     })
   })
