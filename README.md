@@ -26,7 +26,7 @@ Além disso, garanta que os seguintes sistemas estejam instalados em seu computa
 - npm (estou usando a versão `11.1.0` enquanto escrevo este projeto)
 - [Visual Studio Code](https://code.visualstudio.com/) (estou usando a versão `1.97.2` enquanto escrevo este projeto) ou alguma outra IDE de sua preferência
 
-> **Obs.:** Recomendo utilizar as mesmas versões, ou versões mais recentes dos sistemas listados acima de sempre preferrencia para as versões LTS.
+> **Obs.:** Recomendo utilizar as mesmas versões, ou versões mais recentes dos sistemas listados acima, de sempre preferrencia para as versões LTS.
 >
 > **Obs. 2:** Ao instalar o Node.js o npm é instalado junto. 🎉
 >
