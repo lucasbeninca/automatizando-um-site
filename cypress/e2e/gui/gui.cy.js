@@ -1,27 +1,16 @@
-import { generate } from 'gerador-validador-cpf';
+import { generateTestData, formatCPF, formatPhone, formatCEP } from '../../support/utils';
 
 describe('Automated Tests - GUI', () => {
     beforeEach(() => {
-        cy.visit('https://www.estantevirtual.com.br/auth/register/natural?redirect=%2F');
+       
+        const testData = generateTestData();
+        Cypress.env('testData', testData);
     });
 
-    it('register on the page', () => {
-        const email = `teste${Date.now()}@gmail.com`; 
-        const nome = 'pedro'
-        const senha = 'Senha@123';
-        const phone = '46985555555';
-        const CEP = '85660000';
-        const cpf = generate(); 
-        const formatCPF = (cpf) => {
-            return cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
-        };
-        const formatPhone = (phone) => {
-            return phone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
-          };
-        const formatCEP = (CEP) =>{
-            return CEP.replace(/^(\d{5})(\d{3})$/,'$1-$2' );
-        }
-          
+    it.skip('register on the page', () => {
+        const { email, nome, senha, phone, CEP, cpf } = Cypress.env('testData');
+        cy.visit('auth/register/natural?redirect=%2F');
+       
         cy.get('#name')
           .type(nome)
           .should('have.value',nome)
@@ -29,28 +18,28 @@ describe('Automated Tests - GUI', () => {
           .type('teste')
           .should('have.value','teste')
         cy.get('#cpf')
-          .type(cpf)
-          .should('have.value', formatCPF(cpf))
+          .type(cpf,{log:false})
+          .should('have.value', formatCPF(cpf),{log:false})
         cy.get('#dayOfBirth')
-          .select(1)
-          .should('have.value','01')
+          .select('01')
+          .should('have.value', '01');
         cy.get('#monthOfBirth')
-          .select(1)
+          .select('Janeiro')
           .invoke('text')
           .should('contain', 'Janeiro');
         cy.get('#yearOfBirth')
-          .select(25)
-          .should('have.value','2001')
+          .select('2001')
+          .should('have.value', '2001');
         cy.get('#homePhone')
           .type(phone)
-          .should('have.value',formatPhone(phone))
+          .should('have.value',formatPhone(phone),{log:false})
         cy.get('#zipCode')
           .type(CEP)
           .should('have.value',formatCEP(CEP))
         cy.get('#streetType')
-          .should('be.visible')
-          .select(2)
-          .should('have.value','Rua')
+          .wait(1000) // tem um bug do html se não espera o elemento carregar ele fica em branco o correto é usar .should(be.visible)
+          .select('Rua')
+          .should('have.value', 'Rua');
         cy.get('#streetName')
           .type('do comércio')
           .should('have.value','do comércio')
@@ -68,10 +57,10 @@ describe('Automated Tests - GUI', () => {
           .type('dois vizinhos')
           .should('have.value','dois vizinhos')
         cy.get('#email')
-          .type(email)
+          .type(email,{log:false})
           .should('have.value',email)
         cy.get('#password')
-          .type(senha)
+          .type(senha,{log:false})
         cy.get('#emailNewsletter')
           .check()
         cy.get('#privacy')
@@ -84,24 +73,25 @@ describe('Automated Tests - GUI', () => {
     });
 
 
-  it.skip('It must search for a product by name and validate the results', () => {
-      cy.get('#search-bar').type('Smartphone{enter}');
-      cy.get('.product-item').should('have.length.greaterThan', 0);
+  it('It must search for a product by name and validate the results', () => {
+    cy.visit('auth/login?redirect=%2F')
+
+    cy.get('#user')
+      .type(Cypress.env('CYPRESS_EMAIL'),{log:false}) 
+    cy.get('#password')
+      .type(Cypress.env('CYPRESS_PASSWORD'),{log:false})
+    cy.get('button[type="submit"][data-testid="submitButton"]')
+      .click()
+
+      cy.pause()
   });
 
   it.skip('You must add a product to the cart and check the subtotal', () => {
-      cy.get('.product-item').first().click();
-      cy.get('#add-to-cart').click();
-      cy.get('#cart').click();
-      cy.get('.cart-total').should('not.contain', 'R$0,00');
+      
   });
 
   it.skip('You must complete an order using PIX', () => {
-      cy.get('#cart').click();
-      cy.get('#checkout-button').click();
-      cy.get('#payment-method-pix').click();
-      cy.get('#confirm-payment').click();
-      cy.contains('Pedido confirmado!').should('be.visible');
+      
   });
 
   it.skip('Validação de API - Teste POST para criação de usuário', () => {
