@@ -46,4 +46,4 @@ Legal, os pre-requisitos estão prontos. ☑️
 
 5. Apos Clicar em *E2E Testings* navegador desejado por padrão o Cypress necessita que o navegador esteja instalado em sua maquina para poder utilizar o mesmo (recomendo utilizar o google chrome)
 ![Suite-Cypress-Step02](images/step02.png)
-6. após isso só escolher se quer executar os testes de *API* ou *E2E*.
+6. após isso só escolher se quer executar os testes de *API* ou *E2E* Cada arquivo reune os testes referentes a uma verificação do sistema sendo elas  testes de **Login**, **Cadastro** e **Compras**.
