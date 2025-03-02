@@ -5,7 +5,7 @@ describe('Automated Tests - GUI - Register', () => {
     cy.visit('auth/login?redirect=%2F')
   });
 
-  it.skip('login with invalid email', ()=> {
+  it('login with invalid email', ()=> {
     cy.get(selectors.userInput)
       .type('123456@email.com') 
     cy.get(selectors.passwordInput)
@@ -17,7 +17,7 @@ describe('Automated Tests - GUI - Register', () => {
       .should('be.visible')
   })
 
-  it.skip('login with invalid password', ()=> {
+  it('login with invalid password', ()=> {
     cy.get(selectors.userInput)
       .type(Cypress.env('CYPRESS_EMAIL'),{log:false})  
     cy.get(selectors.passwordInput)
@@ -29,7 +29,7 @@ describe('Automated Tests - GUI - Register', () => {
       .should('be.visible')
   })
 
-  it.skip('validate error messages e-mail withoutd', () => {
+  it('validate error messages e-mail withoutd', () => {
     cy.get(selectors.userInput)
       .focus()
       .blur()
@@ -39,7 +39,7 @@ describe('Automated Tests - GUI - Register', () => {
       .contains('O campo “E-mail“ é obrigatório')
   })
 
-  it.skip('validate error messages password withoutd',() =>{
+  it('validate error messages password withoutd',() =>{
     cy.get(selectors.userInput)
       .type(Cypress.env('CYPRESS_EMAIL'),{log:false}) 
     cy.get(selectors.passwordInput)
