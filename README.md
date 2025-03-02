@@ -39,7 +39,7 @@ ___
 Legal, os pre-requisitos estão prontos. ☑️
 
 1. Clone este projeto
-2. Execute o comando `npm init`para instalar as dev dependences
+2. Na raiz do projeot execute o comando `npm install`para instalar as dev dependences
 3. Execute o comando `npx cypress open` para abrir o Cypress 
 4. Na Suite do Cypress selecione *E2E Testings*
 ![Suite-Cypress-Step01](images/step01.png)
