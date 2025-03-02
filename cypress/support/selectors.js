@@ -23,6 +23,13 @@ export const selectors = {
     emailNewsletter: '#emailNewsletter',
     privacy: '#privacy',
     buttonRegister: '[qa-auto="gift-wrapping-select-button"]',
-    validateLoginSussefull: '.user__content'
+    validateLoginSussefull: '.user__content',
+    search: '#search',
+    titleresultsearch: 'h1.header-content__title.header-content__title--desktop',
+    resultsearchlist: '.product-list__items',
+    resultInvalidSearchTitle: '.empty__title',
+    about: '.footer-menu__label',
+    title1Chapter: 'h1.principaltitle-v1',
+    title1ChapterHistory: 'h1.principaltitle-v1 span',
    
 }

@@ -56,7 +56,7 @@ describe('Automated Tests - GUI - Register', () => {
         .type(Cypress.env('CYPRESS_PASSWORD'),{log:false})
       cy.get(selectors.buttonSubmint)
         .click()
-      cy.get('.user__content', { timeout: 5000 })
+      cy.get(selectors.validateLoginSussefull, { timeout: 5000 })
       .should('contain', `Olá,`);     
     })
 })
